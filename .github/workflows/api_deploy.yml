@@ -1,15 +1,16 @@
-name: Build (Turbo)
+name: API Deploy
 
 on:
-  - pull_request
+  push:
+    branches:
+      - main
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 jobs:
-  build:
-    timeout-minutes: 40
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -45,5 +46,9 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
-      - name: Build with Turbo
-        run: pnpm turbo build
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          packageManager: pnpm
+          workingDirectory: ./apps/api/
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
