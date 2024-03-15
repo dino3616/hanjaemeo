@@ -8,6 +8,7 @@ module.exports = {
     'turbo',
     'prettier',
   ],
+  plugins: ['@typescript-eslint', 'import', 'prettier'],
   parser: '@typescript-eslint/parser',
   ignorePatterns: ['.turbo', 'node_modules', 'dist', '**/*.js', '**/*.mjs', '**/*.jsx', 'tsup.config.ts'],
   rules: {

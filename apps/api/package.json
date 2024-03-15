@@ -1,0 +1,28 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "wrangler dev ./dist/server.js",
+    "deploy": "pnpm build && wrangler deploy ./dist/server.js",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write ."
+  },
+  "dependencies": {
+    "hono": "4.1.0",
+    "honox": "0.1.8",
+    "zod": "3.22.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "4.20240314.0",
+    "eslint-config-custom-node": "workspace:*",
+    "tsconfig": "workspace:*",
+    "vite": "5.1.6",
+    "vitest": "1.4.0",
+    "wrangler": "3.34.2"
+  }
+}
