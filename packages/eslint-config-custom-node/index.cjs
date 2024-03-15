@@ -22,6 +22,7 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-var-requires': 'off',
         'import/no-default-export': 'off',
+        'import/no-extraneous-dependencies': 'off',
         'import/prefer-default-export': 'off',
       },
     },
