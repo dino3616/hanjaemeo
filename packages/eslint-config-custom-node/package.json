@@ -1,0 +1,17 @@
+{
+  "name": "eslint-config-custom-node",
+  "version": "0.0.0",
+  "main": "index.cjs",
+  "type": "commonjs",
+  "license": "MIT",
+  "scripts": {
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write ."
+  },
+  "dependencies": {
+    "eslint-config-custom": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -47,3 +47,6 @@ jobs:
 
       - name: Build with Turbo
         run: pnpm turbo build
+
+      - name: Deploy API to Cloudflare Workers
+        run: pnpm --filter api run deploy
