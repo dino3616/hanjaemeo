@@ -2,6 +2,7 @@ import { defineConfig } from '@pandacss/dev';
 import { radixColorsPreset } from 'panda-preset-radix-colors';
 import { radixUIPreset } from 'panda-preset-radix-ui';
 import { drawerSlotRecipe } from '@/components/Drawer/Drawer.recipe';
+import { inputRecipe } from '@/components/Input/Input.recipe';
 import { selectSlotRecipe } from '@/components/Select/Select.recipe';
 import {
   markupHeadingRecipe,
@@ -15,6 +16,8 @@ import {
   markupCodeSlotRecipe,
   markupTableSlotRecipe,
   markupShowcaseRecipe,
+  markupWordRecipe,
+  markupTimestampRecipe,
 } from '@/features/markup/styles/markup';
 import { breakpoints } from '@/styles/tokens/breakpoints';
 
@@ -149,8 +152,11 @@ export default defineConfig({
         markupCode: markupCodeSlotRecipe,
         markupTable: markupTableSlotRecipe,
         markupShowcase: markupShowcaseRecipe,
+        markupWord: markupWordRecipe,
+        markupTimestamp: markupTimestampRecipe,
         select: selectSlotRecipe,
         drawer: drawerSlotRecipe,
+        input: inputRecipe,
       },
     },
   },
@@ -181,7 +187,7 @@ export default defineConfig({
         warning: 'amber',
         danger: 'crimson',
       },
-      colorScales: ['white', 'black'],
+      colorScales: ['white', 'black', 'slate', 'pink', 'cyan', 'green', 'orange', 'indigo', 'lime', 'purple'],
       withoutAlpha: false,
     }),
 

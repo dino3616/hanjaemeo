@@ -96,7 +96,7 @@ export const documentLinkSlotRecipe = sva({
 
 export type DocumentLinkProps<T> = {
   className?: string;
-} & DocumentLinkMetadata<T> &
+} & Omit<DocumentLinkMetadata<T>, 'slug'> &
   RecipeVariantProps<typeof documentLinkSlotRecipe> &
   Omit<LinkProps<T>, 'href'>;
 

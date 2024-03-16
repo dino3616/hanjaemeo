@@ -1,0 +1,415 @@
+---
+title: 韓国語表示のMDX構文
+date: 2024-02-03
+description: This page demonstrates the usage of MDX briefly.
+emoji: ✒️
+---
+
+## 韓国語の品詞の分類
+
+| 品詞   | コード上での表現 | 色       | 例                                                 | コード                                                     |
+| ------ | ---------------- | -------- | -------------------------------------------------- | ---------------------------------------------------------- |
+| 名詞   | `noun`           | `pink`   | <Noun>{유행}^(流行)</Noun>                         | `<Noun>{유행}^(流行)</Noun>{:mdx}`                         |
+| 動詞   | `verb`           | `green`  | <Verb>{말해줘}^(言って)</Verb>                     | `<Verb>{말해줘}^(言って)</Verb>{:mdx}`                     |
+| 形容詞 | `adjective`      | `purple` | <Adjective>{착한}^(善良な)</Adjective>             | `<Adjective>{착한}^(善良な)</Adjective>{:mdx}`             |
+| 助詞   | `particle`       | `slate`  | <Particle>{은}^(は)</Particle>                     | `<Particle>{은}^(は)</Particle>{:mdx}`                     |
+| 副詞   | `adverb`         | `indigo` | <Adverb>{더}^(もっと)</Adverb>                     | `<Adverb>{더}^(もっと)</Adverb>{:mdx}`                     |
+| 代名詞 | `pronoun`        | `orange` | <Pronoun>{난}^(私は)</Pronoun>                     | `<Pronoun>{난}^(私は)</Pronoun>{:mdx}`                     |
+| 冠形詞 | `determiner`     | `yellow` | <Determiner>{그}^(その)</Determiner>               | `<Determiner>{그}^(その)</Determiner>{:mdx}`               |
+| 数詞   | `numeral`        | `cyan`   | <Numeral>{첫째}^(一つ目)</Numeral>                 | `<Numeral>{첫째}^(一つ目)</Numeral>{:mdx}`                 |
+| 感嘆詞 | `interjection`   | `lime`   | <Interjection>{여보세요}^(もしもし)</Interjection> | `<Interjection>{여보세요}^(もしもし)</Interjection>{:mdx}` |
+| 未分類 | `unclassified`   | `slate`  | <Unclassified>{지}^(でしょ？)</Unclassified>       | `<Unclassified>{지}^(でしょ？)</Unclassified>{:mdx}`       |
+| 空白   | `whitespace`     | `white`  | <Space />                                          | `<Space />{:mdx}`                                          |
+
+> [!WARNING]  
+> `unclassified`は、慣用表現などで分類が難しい場合にのみ使用する。
+
+この分類表は、韓国語の品詞をコード上での表現と色で区別し、整理するための基本的なガイドラインを提供します。ただし、言語学の観点から、特定の文脈や詳細な研究によってはさらなる調整が必要になる場合があります。
+
+> 韓国の学校文法では名詞・代名詞・数詞・助詞・動詞・形容詞・冠形詞・副詞・感嘆詞という9つの品詞を設けており、さらに文法成分として体言・関係言・用言・修飾言・独立言を設けている。 https://ja.wikipedia.org/wiki/%E6%9C%9D%E9%AE%AE%E8%AA%9E%E3%81%AE%E6%96%87%E6%B3%95
+
+---
+
+## 元の文章
+
+```
+유행이 돌고 돌아도 난 그 틀에 없어 이미
+뭐든 될 대로 되라지
+```
+
+## 学習用の表示
+
+유행이 돌고 돌아도 난 그 틀에 없어 이미
+
+> 流行が回り回っても、私はもうその枠にいないの
+
+{유행}^(流行){이}^(が) {돌고}^(回り) {돌아도}^(回っても) {난}^(私は) {그}^(その) {틀}^(枠){에}^(に) {없어}^(いない) {이미}^(もう)
+
+```mdx
+{유행}^(流行){이}^(が) {돌고}^(回り) {돌아도}^(回っても) {난}^(私は) {그}^(その) {틀}^(枠){에}^(に) {없어}^(いない) {이미}^(もう)
+```
+
+뭐든 될 대로 되라지
+
+> 何事も為るように為るって言うでしょ
+
+{뭐}^(何){든}^(にしろ) {될}^(為る) {대}^(まま){로}^(で) {되라}^(為るって言う){지}^(でしょ)
+
+```mdx
+{뭐}^(何){든}^(にしろ) {될}^(為る) {대}^(まま){로}^(で) {되라}^(為るって言う){지}^(でしょ)
+```
+
+# LLMプロンプト
+
+あなたは日本人向けの韓国語教師です。与えられた韓国語の文章もしくは会話文に以下の形式で対語訳と意訳をつけてください。
+
+## 単語ごとの対訳と品詞の表示
+
+| 品詞   | 例                                                 |
+| ------ | -------------------------------------------------- |
+| 名詞   | <Noun>{유행}^(流行)</Noun>                         |
+| 動詞   | <Verb>{말해줘}^(言って)</Verb>                     |
+| 形容詞 | <Adjective>{착한}^(善良な)</Adjective>             |
+| 助詞   | <Particle>{은}^(は)</Particle>                     |
+| 副詞   | <Adverb>{더}^(もっと)</Adverb>                     |
+| 代名詞 | <Pronoun>{난}^(私は)</Pronoun>                     |
+| 冠形詞 | <Determiner>{그}^(その)</Determiner>               |
+| 数詞   | <Numeral>{첫째}^(一つ目)</Numeral>                 |
+| 感嘆詞 | <Interjection>{여보세요}^(もしもし)</Interjection> |
+| 未分類 | <Unclassified>{지}^(でしょ？)</Unclassified>       |
+| 空白   | <Space />                                          |
+
+ただし、`unclassified`は、慣用表現や古典口語表現などで分類が難しい場合にのみ使用する。
+
+## 単語の分割
+
+空白で区切られていなくても、助詞や動詞の活用語尾などを見て、適切に分割してください。
+
+- 正しい例
+
+  <Noun>{위}^(上)</Noun>
+  <Particle>{에}^(に)</Particle>
+
+- 正しくない例
+  <Particle>{위에}^(上に)</Particle>
+
+## 出力例
+
+<Timestamp t="88.123" />
+
+<p>
+  <Noun>{유행}^(流行)</Noun>
+  <Particle>{이}^(が)</Particle>
+  <Space />
+  <Verb>{돌고}^(回り)</Verb>
+  <Space />
+  <Verb>{돌아도}^(回っても)</Verb>
+  <Space />
+  <Pronoun>{난}^(私は)</Pronoun>
+  <Space />
+  <Determiner>{그}^(その)</Determiner>
+  <Space />
+  <Noun>{틀}^(枠)</Noun>
+  <Particle>{에}^(に)</Particle>
+  <Space />
+  <Verb>{없어}^(いない)</Verb>
+  <Space />
+  <Adverb>{이미}^(もう)</Adverb>
+</p>
+
+> 流行が回り回っても、私はもうその枠にいないの
+
+<Timestamp t="100.123" />
+
+<p>
+  <Noun>{뭐}^(何)</Noun>
+  <Particle>{든}^(にしろ)</Particle>
+  <Space />
+  <Verb>{될}^(為る)</Verb>
+  <Space />
+  <Noun>{대}^(まま)</Noun>
+  <Particle>{로}^(で)</Particle>
+  <Space />
+  <Verb>{되라}^(為るって言う)</Verb>
+  <Unclassified>{지}^(でしょ)</Unclassified>
+</p>
+
+> 何事も為るように為るって言うでしょ
+
+---
+
+## 生成例
+
+<p>
+  <Adjective>{다채로운}^(多彩な)</Adjective>
+  <Space />
+  <Noun>{매력}^(魅力)</Noun>
+  <Space />
+  <Numeral>{수많은}^(多数の)</Numeral>
+  <Space />
+  <Noun>{변칙}^(変則)</Noun>
+  <Space />
+  <Particle>{위에}^(上に)</Particle>
+  <Space />
+  <Adverb>{더}^(もっと)</Adverb>
+  <Space />
+  <Noun>{빛을}^(光を)</Noun>
+  <Space />
+  <Verb>{발하지}^(発する)</Verb>
+</p>
+
+<p>
+  <Adjective>{착한}^(善良な)</Adjective>
+  <Space />
+  <Noun>{척은}^(ふりは)</Noun>
+  <Space />
+  <Adjective>{지겨워}^(うんざりだ)</Adjective>
+</p>
+
+<p>
+  <Noun>{단점이라곤}^(短所と言えば)</Noun>
+  <Space />
+  <Adjective>{없는}^(ない)</Adjective>
+  <Space />
+  <Noun>{게}^(ことが)</Noun>
+  <Space />
+  <Noun>{단점이라던}^(短所だと言う)</Noun>
+</p>
+<p>
+  <Determiner>{그}^(その)</Determiner>
+  <Space />
+  <Noun>{허세도}^(見栄も)</Noun>
+  <Space />
+  <Adverb>{마냥}^(ずっと)</Adverb>
+  <Space />
+  <Adjective>{좋았어}^(良かった)</Adjective>
+</p>
+
+<p>
+  <Adverb>{하지만}^(でも)</Adverb>
+  <Space />
+  <Pronoun>{내}^(私の)</Pronoun>
+  <Space />
+  <Noun>{일기가}^(日記が)</Noun>
+</p>
+<p>
+  <Adjective>{재미없어진}^(つまらなくなった)</Adjective>
+  <Space />
+  <Noun>{이유}^(理由)</Noun>
+</p>
+<p>
+  <Pronoun>{내가}^(私が)</Pronoun>
+  <Space />
+  <Adjective>{없어진}^(いなくなった)</Adjective>
+  <Space />
+  <Noun>{나의}^(私の)</Noun>
+  <Space />
+  <Noun>{매일들은}^(毎日は)</Noun>
+  <Space />
+  <Adjective>{허전해}^(さみしい)</Adjective>
+  <Adverb>{좀}^(ちょっと)</Adverb>
+  <Space />
+  <Adjective>{이상해}^(変なの)</Adjective>
+  <Space />
+  <Adverb>{왜}^(どうして)</Adverb>
+  <Space />
+  <Noun>{둘}^(二人の)</Noun>
+  <Space />
+  <Noun>{사이에}^(間に)</Noun>
+  <Pronoun>{너만}^(君だけ)</Pronoun>
+  <Space />
+  <Pronoun>{너만}^(君だけが)</Pronoun>
+  <Space />
+  <Verb>{보이는}^(見えるんだろう)</Verb>
+  <Space />
+  <Noun>{걸까}^(んだろう)</Noun>
+  <Pronoun>{난}^(私は)</Pronoun>
+  <Space />
+  <Adjective>{까다롭고}^(気むずかしい)</Adjective>
+  <Space />
+  <Adjective>{힘든}^(つらい)</Adjective>
+  <Space />
+  <Noun>{아이라}^(子だから)</Noun>
+  <Determiner>{그런}^(そんな)</Determiner>
+  <Space />
+  <Adjective>{피곤한}^(疲れる)</Adjective>
+  <Space />
+  <Noun>{생각만}^(考えばかり)</Noun>
+  <Space />
+  <Verb>{한대}^(するんだよって)</Verb>
+  <Noun>{오늘}^(今日)</Noun>
+  <Space />
+  <Noun>{나눈}^(交わした)</Noun>
+  <Space />
+  <Noun>{문자}^(メッセージ)</Noun>
+  <Space />
+  <Noun>{속에}^(の中には)</Noun>
+  <Adverb>{새로}^(新しく)</Adverb>
+  <Space />
+  <Verb>{산}^(買った)</Verb>
+  <Space />
+  <Noun>{티셔츠}^(Tシャツ)</Noun>
+  <Determiner>{그}^(その)</Determiner>
+  <Space />
+  <Noun>{얘기뿐이야}^(話ばっかりだね)</Noun>
+  <Adverb>{이제야}^(やっと)</Adverb>
+  <Space />
+  <Pronoun>{난}^(私は)</Pronoun>
+  <Space />
+  <Verb>{알}^(わかる)</Verb>
+  <Space />
+  <Verb>{것}^(こと)</Verb>
+  <Space />
+  <Adjective>{같아}^(みたい)</Adjective>
+</p>
+
+---
+
+<p>
+  <Pronoun>{당신}^(あなた)</Pronoun>
+  <Particle>{을}^(を)</Particle>
+  <Space />
+  <Verb>{뺏기면}^(奪われたら)</Verb>
+  <Space />
+  <Adverb>{안되지}^(いけないよね)</Adverb>
+  <Space />
+  <Noun>{앞으로도}^(これからも)</Noun>
+  <Space />
+  <Adverb>{많은}^(たくさんの)</Adverb>
+  <Space />
+  <Adjective>{좋은}^(良い)</Adjective>
+  <Space />
+  <Noun>{일}^(こと)</Noun>
+  <Particle>{을}^(を)</Particle>
+  <Space />
+  <Verb>{할테니까}^(するからね)</Verb>
+  <Space />
+  <Adverb>{아니지}^(そうじゃない？)</Adverb>
+</p>
+> あなたを奪われたらいけないよね、これからもたくさんの良いことをするからね、そうじゃない？
+
+<p>
+  <Noun>{변태}^(変態)</Noun>
+  <Particle>{가}^(が)</Particle>
+  <Space />
+  <Adverb>{전혀}^(全く)</Adverb>
+  <Space />
+  <Adjective>{부족해}^(足りないよ)</Adjective>
+  <Space />
+  <Noun>{변태}^(変態)</Noun>
+  <Particle>{가}^(が)</Particle>
+  <Space />
+  <Noun>{뭐야}^(何？)</Noun>
+</p>
+> 変態が全く足りないよ、変態が何？
+
+<p>
+  <Pronoun>{나는}^(私は)</Pronoun>
+  <Space />
+  <Noun>{얀데레}^(ヤンデレ)</Noun>
+  <Particle>{가}^(に)</Particle>
+  <Space />
+  <Verb>{되고}^(なる)</Verb>
+  <Space />
+  <Verb>{싶지}^(したく)</Verb>
+  <Adverb>{않아}^(ない)</Adverb>
+  <Space />
+  <Adverb>{더군다나}^(ましてや)</Adverb>
+  <Space />
+  <Noun>{변태}^(変態)</Noun>
+  <Particle>{가}^(に)</Particle>
+  <Space />
+  <Verb>{되고}^(なる)</Verb>
+  <Space />
+  <Verb>{싶지}^(したく)</Verb>
+  <Adverb>{않아}^(ない)</Adverb>
+</p>
+> 私はヤンデレになりたくない、ましてや変態になりたくないの
+
+<p>
+  <Adverb>{그럼}^(それでは)</Adverb>
+  <Space />
+  <Noun>{뭐가}^(何が)</Noun>
+  <Particle>{되고}^(になり)</Particle>
+  <Space />
+  <Verb>{싶어}^(たいの？)</Verb>
+</p>
+> それでは、何になりたいの？
+
+<p>
+  <Adverb>{왜}^(なぜ)</Adverb>
+  <Space />
+  <Noun>{얀데레}^(ヤンデレ)</Noun>
+  <Particle>{가}^(に)</Particle>
+  <Space />
+  <Verb>{되고}^(なる)</Verb>
+  <Space />
+  <Verb>{싶어}^(たいの？)</Verb>
+</p>
+> なぜヤンデレになりたいの？
+
+---
+
+<p>
+  <Noun>{룸}^(部屋)</Noun>
+  <Particle>{에}^(に)</Particle>
+  <Space />
+  <Pronoun>{저희}^(私たち)</Pronoun>
+  <Space />
+  <Adverb>{지금}^(今)</Adverb>
+  <Space />
+  <Determiner>{그}^(その)</Determiner>
+  <Space />
+  <Noun>{거실}^(リビング)</Noun>
+  <Space />
+  <Noun>{거실에}^(リビングに)</Noun>
+  <Space />
+  <Verb>{있는데}^(いるけど)</Verb>
+  <Space />
+  <Adverb>{항상}^(いつも)</Adverb>
+  <Space />
+  <Noun>{룸메}^(ルームメイト)</Noun>
+  <Space />
+  <Pronoun>{그리}^(そこに)</Pronoun>
+  <Space />
+  <Adverb>{같이}^(一緒に)</Adverb>
+  <Space />
+  <Verb>{있지}^(いない)</Verb>
+  <Adverb>{않아요}^(ね)</Adverb>
+</p>
+
+> 私たちは今、そのリビングにいるけど、いつもルームメイトがそこに一緒にいないね。
+
+<p>
+  <Pronoun>{저희}^(私たち)</Pronoun>
+  <Space />
+  <Adverb>{그냥}^(ただ)</Adverb>
+  <Space />
+  <Adverb>{그냥}^(ただ)</Adverb>
+  <Space />
+  <Noun>{거실에}^(リビングに)</Noun>
+  <Space />
+  <Verb>{있을}^(いる)</Verb>
+  <Space />
+  <Noun>{때도}^(時も)</Noun>
+  <Space />
+  <Verb>{있고}^(あるし)</Verb>
+  <Space />
+  <Noun>{무릎}^(膝)</Noun>
+  <Space />
+  <Noun>{방해했을}^(邪魔した)</Noun>
+  <Space />
+  <Noun>{때도}^(時も)</Noun>
+  <Space />
+  <Verb>{있고}^(あるし)</Verb>
+  <Space />
+  <Adverb>{하니까}^(だから)</Adverb>
+  <Space />
+  <Adverb>{매번}^(毎回)</Adverb>
+  <Space />
+  <Verb>{다를}^(違う)</Verb>
+  <Space />
+  <Adverb>{다르죠}^(よね)</Adverb>
+</p>
+
+> 私たちがただリビングにいる時もあれば、膝を邪魔した時もあるし、だから毎回違うよね。

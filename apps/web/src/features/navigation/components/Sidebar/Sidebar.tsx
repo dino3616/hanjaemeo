@@ -2,7 +2,9 @@ import type { ReactNode, ComponentPropsWithoutRef } from 'react';
 import { getDocumentLinkTreeMetadata } from '../../utils/getDocumentLinkTreeMetadata';
 import { DocumentLinkTree } from '../DocumentLinkTree/DocumentLinkTree';
 import { cx, sva, type RecipeVariantProps } from 'styled-system/css';
-
+import { markupHr } from 'styled-system/recipes';
+import { DocumentLink } from '../DocumentLink/DocumentLink';
+import type { DocumentLinkTreeMetadata } from '../../types/DocumentLinkMetadata';
 export const sidebarSlotRecipe = sva({
   slots: ['container', 'treelist'],
   base: {
@@ -42,6 +44,22 @@ export const sidebarSlotRecipe = sva({
 
 export type SidebarProps = RecipeVariantProps<typeof sidebarSlotRecipe> & ComponentPropsWithoutRef<'nav'>;
 
+const favoriteLinkTreeMetadata: DocumentLinkTreeMetadata = {
+  title: 'お気に入り',
+  description: 'あなたがお気に入りに追加した動画・テキスト',
+  emoji: '💕',
+  slug: ['favorite'], // Dummy
+  href: '#',
+};
+
+const historyLinkTreeMetadata: DocumentLinkTreeMetadata = {
+  title: '閲覧履歴',
+  description: 'あなたが最近見た動画・テキスト',
+  emoji: '🕒',
+  slug: ['history'], // Dummy
+  href: '#',
+};
+
 export const Sidebar = ({ className, hasPadding, ...props }: SidebarProps): ReactNode => {
   const { container, treelist } = sidebarSlotRecipe({ hasPadding });
   const rootTrees = getDocumentLinkTreeMetadata();
@@ -52,6 +70,8 @@ export const Sidebar = ({ className, hasPadding, ...props }: SidebarProps): Reac
         {rootTrees.map((rootTree) => (
           <DocumentLinkTree key={rootTree.slug[0]} metadata={rootTree} />
         ))}
+        <DocumentLinkTree metadata={favoriteLinkTreeMetadata} />
+        <DocumentLinkTree metadata={historyLinkTreeMetadata} />
       </ol>
     </nav>
   );

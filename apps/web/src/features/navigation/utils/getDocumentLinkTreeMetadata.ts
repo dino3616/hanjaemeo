@@ -9,7 +9,7 @@ import { allContentDocuments } from 'contentlayer/generated';
  * @template T - Next.js route implementation. (Only used for type checking when typedRoute in enabled in config.)
  * @returns An array of `DocumentLinkTreeMetadata` objects.
  */
-const getAllDocumentLinkMetadata = <T>(): DocumentLinkMetadata<T>[] => {
+const getAllDocumentLinkMetadata = (): DocumentLinkMetadata[] => {
   // Sort by slug length in descending order
   const documentLinkMetadata = allContentDocuments
     .map((document) => {
@@ -26,8 +26,8 @@ const getAllDocumentLinkMetadata = <T>(): DocumentLinkMetadata<T>[] => {
   return documentLinkMetadata;
 };
 
-export const getDocumentLinkTreeMetadata = <T>(): DocumentLinkTreeMetadata<T>[] => {
-  const partialTrees: DocumentLinkTreeMetadata<T>[] = getAllDocumentLinkMetadata<T>();
+export const getDocumentLinkTreeMetadata = (): DocumentLinkTreeMetadata[] => {
+  const partialTrees: DocumentLinkTreeMetadata[] = getAllDocumentLinkMetadata();
 
   partialTrees.forEach((document) => {
     const parentSlug = document.slug.slice(0, -1);
