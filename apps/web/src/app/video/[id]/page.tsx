@@ -3,12 +3,12 @@
 // import { Calendar } from 'lucide-react';
 import type { Metadata, ResolvingMetadata } from 'next';
 // import { notFound } from 'next/navigation';
-// import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import type { ReactElement } from 'react';
 import { css, cx } from 'styled-system/css';
 import { flex } from 'styled-system/patterns';
 import { markupBlockquote, markupHeading, markupHr } from 'styled-system/recipes';
-// import { mdxComponents } from '@/features/markup/components/mdxComponents';
+import { mdxComponents } from '@/features/markup/components/mdxComponents';
 import { Youtube } from '@/features/video/components/Youtube/Youtube';
 import { fetchYoutubeVideoInfo } from '@/features/video/utils/fetchYoutubeVideoInfo';
 
@@ -43,8 +43,18 @@ const Document = async ({ params: { id } }: PageProps): Promise<ReactElement> =>
   // Read the MDX file metadata.
   // const titleWithEmoji = [post.emoji, post.title].filter(Boolean).join(' ');
 
+  const res = await fetch(`https://hanjaemeo-production.up.railway.app/analyze/`,{
+    method: 'POST', // HTTPメソッドを指定
+  headers: {
+    'Content-Type': 'application/json', // コンテンツタイプを指定
+  },
+  body: JSON.stringify({
+    url: `https://www.youtube.com/watch?v=${id}`
+  })
+  });
+
   // Parse the MDX file via the useMDXComponent hook.
-  // const MDXContent = useMDXComponent(post.body.code);
+  const MDXContent = useMDXComponent(res.body["mdx"]);
 
   const videoInfo = await fetchYoutubeVideoInfo(id);
 
@@ -167,7 +177,7 @@ const Document = async ({ params: { id } }: PageProps): Promise<ReactElement> =>
             />
           </div>
           <hr className={markupHr()} />
-          {/* <MDXContent components={mdxComponents} /> */}
+          <MDXContent components={mdxComponents} />
         </main>
       </div>
     </div>
