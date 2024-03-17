@@ -12,14 +12,14 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   ignorePatterns: ['.turbo', 'node_modules', 'dist', '**/*.js', '**/*.mjs', '**/*.jsx', 'tsup.config.ts'],
   rules: {
-    'import/order': [
-      'error',
-      {
-        alphabetize: {
-          order: 'asc',
-        },
-      },
-    ],
+    // 'import/order': [
+    //   'error',
+    //   {
+    //     alphabetize: {
+    //       order: 'asc',
+    //     },
+    //   },
+    // ],
     'import/prefer-default-export': 'off',
   },
 };

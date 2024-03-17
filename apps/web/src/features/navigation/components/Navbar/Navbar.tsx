@@ -35,7 +35,6 @@ const navbarSlotRecipe = sva({
       mx: '2',
       display: {
         base: 'grid',
-        xl: 'none',
       },
       gridTemplateColumns: {
         base: '1fr auto 1fr',

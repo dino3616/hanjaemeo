@@ -3,22 +3,21 @@
 The source code for my personal website, [hanjaemeo](https://hanjaemeo).
 
 Made with 💙 using:
-- **Next.js<sup>14</sup>** ▲ *with `app` router.*
-- **Contentlayer** 📚 for MDX processing with fast HMR, remark and rehype supports.
-- ~~**Hono** 🔥 *for fast and type-safe REST server.*~~
-- **Jotai** 👻 *to manage client-side states.*
-- **Panda CSS** 🐼 *for styling with amazing semantic token and recipe system.*
-- **Radix UI** 💻 *to provide accesible UI without hassle.*
-- ~~**Tanstack Query<sup>v5</sup>** 🚦 *to query and mutate endpoints efficiently.*~~
-- ~~**React Hook Form** 📋 *to handle form with validation uncontrolledly.*~~
-- **Storybook** 📕 *to check styles and a11y, and to run visual regression tests.*
-- ~~**Vitest** ⚡ *to unit test components and server endpoints.*~~
-- **Turborepo**  *to manage monorepo with cache pipelines.*
 
+- **Next.js<sup>14</sup>** ▲ _with `app` router._
+- **Contentlayer** 📚 for MDX processing with fast HMR, remark and rehype supports.
+- ~~**Hono** 🔥 _for fast and type-safe REST server._~~
+- **Jotai** 👻 _to manage client-side states._
+- **Panda CSS** 🐼 _for styling with amazing semantic token and recipe system._
+- **Radix UI** 💻 _to provide accesible UI without hassle._
+- ~~**Tanstack Query<sup>v5</sup>** 🚦 _to query and mutate endpoints efficiently._~~
+- ~~**React Hook Form** 📋 _to handle form with validation uncontrolledly._~~
+- **Storybook** 📕 _to check styles and a11y, and to run visual regression tests._
+- ~~**Vitest** ⚡ _to unit test components and server endpoints._~~
+- **Turborepo** _to manage monorepo with cache pipelines._
 
 > [!WARNING]  
 > Still under construction 🚧
-
 
 ### Build
 
@@ -38,10 +37,9 @@ If you would like to build only the packages which are nessessary for the apps, 
 pnpm turbo build-fast
 ```
 
-> [!NOTE]    
+> [!NOTE]  
 > For most of packages in `packages/*`, [`tsup`](https://github.com/egoist/tsup) bundler is used to bundle their typescript codes.
 > More precisely, npm script `build-fast` bundles the typescript codes without type checking, while `build` does with.
-
 
 ### Develop
 

@@ -2,7 +2,10 @@ import type { MDXComponents } from 'mdx/types';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { Image } from '@/components/Image/Image';
 import type { ImageProps } from '@/components/Image/Image';
-import { Showcase } from '@/features/markup/components/Showcase/Showcase';
+import { Showcase } from './Showcase/Showcase';
+import { Word } from './Word/Word';
+import type { WordProps } from './Word/Word';
+import { Timestamp } from './Timestamp/Timestamp';
 import { css, cx } from 'styled-system/css';
 import {
   markupHeading,
@@ -20,6 +23,19 @@ import {
 // Define your custom MDX components.
 export const mdxComponents: MDXComponents = {
   Showcase,
+  Noun: (props: WordProps): ReactNode => <Word type="noun" {...props} />,
+  Verb: (props: WordProps): ReactNode => <Word type="verb" {...props} />,
+  Adjective: (props: WordProps): ReactNode => <Word type="adjective" {...props} />,
+  Particle: (props: WordProps): ReactNode => <Word type="particle" {...props} />,
+  Adverb: (props: WordProps): ReactNode => <Word type="adverb" {...props} />,
+  Pronoun: (props: WordProps): ReactNode => <Word type="pronoun" {...props} />,
+  Determiner: (props: WordProps): ReactNode => <Word type="determiner" {...props} />,
+  Numeral: (props: WordProps): ReactNode => <Word type="numeral" {...props} />,
+  Interjection: (props: WordProps): ReactNode => <Word type="interjection" {...props} />,
+  Unclassified: (props: WordProps): ReactNode => <Word type="unclassified" {...props} />,
+  Conjunction: (props: WordProps): ReactNode => <Word type="unclassified" {...props} />,
+  Space: (props: WordProps): ReactNode => <Word type="space" {...props} />,
+  Timestamp,
   // Override the default <a> element to use the next/link component.
   // a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
   // Add a custom component.
@@ -135,7 +151,7 @@ export const mdxComponents: MDXComponents = {
     <span className={cx(markupSpan(), className)} {...props} />
   ),
   blockquote: ({ className, ...props }: ComponentPropsWithoutRef<'blockquote'>): ReactNode => (
-    <blockquote className={cx(markupBlockquote(), className)} {...props} />
+    <blockquote className={cx(markupBlockquote({ type: 'translation' }), className)} {...props} />
   ),
   div: ({ className, ...props }: ComponentPropsWithoutRef<'div'>): ReactNode => (
     <div className={cx(markupDiv(), className)} {...props} />

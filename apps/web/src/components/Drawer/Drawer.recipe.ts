@@ -35,6 +35,7 @@ export const drawerSlotRecipe = sva({
       flexDir: 'column',
       gap: '2',
       w: 'full',
+      flexGrow: '1',
     },
     knob: {
       position: 'absolute',

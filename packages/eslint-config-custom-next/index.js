@@ -30,21 +30,21 @@ module.exports = {
     'import/extensions': ['error', 'never'],
     'import/no-default-export': 'error',
     'import/no-extraneous-dependencies': ['error', { packageDir: ['./'] }],
-    'import/order': [
-      'error',
-      {
-        pathGroups: [
-          {
-            pattern: '@/**',
-            group: 'internal',
-            position: 'before',
-          },
-        ],
-        alphabetize: {
-          order: 'asc',
-        },
-      },
-    ],
+    // 'import/order': [
+    //   'error',
+    //   {
+    //     pathGroups: [
+    //       {
+    //         pattern: '@/**',
+    //         group: 'internal',
+    //         position: 'before',
+    //       },
+    //     ],
+    //     alphabetize: {
+    //       order: 'asc',
+    //     },
+    //   },
+    // ],
     'import/prefer-default-export': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',

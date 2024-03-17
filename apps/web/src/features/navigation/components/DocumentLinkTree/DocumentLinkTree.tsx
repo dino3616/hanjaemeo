@@ -24,12 +24,12 @@ export const documentLinkTreeSlotRecipe = sva({
   },
 });
 
-export type DocumentLinkTreeProps<T> = {
-  metadata: DocumentLinkTreeMetadata<T>;
+export type DocumentLinkTreeProps = {
+  metadata: DocumentLinkTreeMetadata;
 } & RecipeVariantProps<typeof documentLinkTreeSlotRecipe> &
   ComponentPropsWithoutRef<'li'>;
 
-export const DocumentLinkTree = <T,>({ metadata, className, ...props }: DocumentLinkTreeProps<T>): ReactNode => {
+export const DocumentLinkTree = ({ metadata, className, ...props }: DocumentLinkTreeProps): ReactNode => {
   const { container, childlist } = documentLinkTreeSlotRecipe(props);
   const { children, ...parent } = metadata;
   return (

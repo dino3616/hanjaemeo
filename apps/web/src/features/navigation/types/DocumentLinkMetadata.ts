@@ -1,13 +1,13 @@
 import type { LinkProps } from 'next/link';
 
-export type DocumentLinkMetadata<T> = {
+export type DocumentLinkMetadata = {
   emoji?: string;
   title: string;
   description: string;
   slug: string[];
-  href: LinkProps<T>['href'];
+  href: LinkProps['href'];
 };
 
-export type DocumentLinkTreeMetadata<T> = DocumentLinkMetadata<T> & {
-  children?: DocumentLinkTreeMetadata<T>[];
+export type DocumentLinkTreeMetadata = DocumentLinkMetadata & {
+  children?: DocumentLinkTreeMetadata[];
 };
